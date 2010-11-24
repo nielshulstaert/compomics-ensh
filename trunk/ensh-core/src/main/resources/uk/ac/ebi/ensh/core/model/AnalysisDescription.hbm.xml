@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="com.compomics.ensh.core.model.impl.AnalysisDescriptionImpl" table="analysis_description"
+           entity-name="AnalysisDescription">
+
+        <id name="id" type="integer" unsaved-value="null" column="analysis_id">
+            <generator class="native"/>
+        </id>
+
+        <property name="description"/>
+        <property name="displayLabel" column="display_label"/>
+        <property name="displayable" not-null="true"/>
+        <property name="webData" column="web_data"/>
+
+    </class>
+
+</hibernate-mapping>

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="com.compomics.ensh.core.model.impl.AnalysisImpl" table="analysis" entity-name="Analysis">
+
+        <id name="id" type="integer" unsaved-value="null" column="analysis_id">
+            <generator class="native"/>
+        </id>
+
+        <many-to-one name="description" column= "analysis_id" entity-name="AnalysisDescription" not-found="ignore" insert="false" update="false"/>
+        <property name="logicName" column="logic_name" not-null="true"/>
+        <property name="database" column="db"/>
+        <property name="databaseVersion" column="db_version"/>
+        <property name="databaseFile" column="db_file"/>
+        <property name="program"/>
+        <property name="programVersion" column="program_version"/>
+        <property name="programFile" column="program_file"/>
+        <property name="parameters"/>
+        <property name="module"/>
+        <property name="moduleVersion" column="module_version"/>
+        <property name="gffSource" column="gff_source"/>
+        <property name="gffFeature" column="gff_feature"/>
+
+
+    </class>
+
+</hibernate-mapping>

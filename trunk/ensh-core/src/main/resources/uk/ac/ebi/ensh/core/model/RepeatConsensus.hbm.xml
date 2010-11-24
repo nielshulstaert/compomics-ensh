@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="com.compomics.ensh.core.model.impl.RepeatConsensusImpl" table="repeat_consensus"
+           entity-name="RepeatConsensus">
+
+        <id name="id" type="integer" unsaved-value="null" column="repeat_consensus_id">
+            <generator class="native"/>
+        </id>
+
+        <property name="name" column="repeat_name"/>
+        <property name="repeatClass" column="repeat_class"/>
+        <property name="type" column="repeat_type"/>
+        <property name="consensus" column="repeat_consensus"/>
+
+    </class>
+
+</hibernate-mapping>

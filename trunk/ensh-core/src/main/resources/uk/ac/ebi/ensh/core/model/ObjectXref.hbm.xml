@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="com.compomics.ensh.core.model.impl.ObjectXrefImpl" table="object_xref" entity-name="ObjectXref">
+
+        <id name="id" type="integer" unsaved-value="null" column="object_xref_id">
+            <generator class="native"/>
+        </id>
+
+        <many-to-one name="xref" entity-name="Xref" column="xref_id" not-null="true"/>
+        <any name="ensemblObject" meta-type="string" id-type="int">
+             <meta-value value="Gene" class="com.compomics.ensh.core.model.impl.GeneImpl"/>
+             <meta-value value="Transcript" class="com.compomics.ensh.core.model.impl.TranscriptImpl"/>
+             <meta-value value="Translation" class="com.compomics.ensh.core.model.impl.TranslationImpl"/>
+             <column name="ensembl_object_type" not-null="true"/>
+             <column name="ensembl_id" not-null="true"/>
+        </any>
+
+        <property name="linkageAnnotation" column="linkage_annotation"/>
+
+        <joined-subclass name="com.compomics.ensh.core.model.impl.GOAnnotationImpl" table="go_xref" entity-name="GOAnnotation">
+            <key column="object_xref_id" not-null="true"/>
+            <property name="evidenceCode" column="linkage_type" not-null="true"/>
+            <many-to-one name="source" entity-name="Xref" column="source_xref_id"/>
+        </joined-subclass>
+
+        <joined-subclass name="com.compomics.ensh.core.model.impl.XrefIdentityImpl" table="identity_xref" entity-name="XrefIdentity">
+            <key column="object_xref_id" not-null="true"/>
+            <property name="queryIdentity" column="query_identity"/>
+            <property name="targetIdentity" column="target_identity"/>
+            <property name="hitStart" column="hit_start"/>
+            <property name="hitEnd" column="hit_end"/>
+            <property name="translationStart" column="translation_start"/>
+            <property name="translationEnd" column="translation_end"/>
+            <property name="cigarLine" column="cigar_line"/>
+            <property name="score"/>
+            <property name="eValue" type="double"/>
+            <many-to-one name="analysis" entity-name="Analysis" column="analysis_id" not-null="true"/>
+        </joined-subclass>
+
+    </class>
+
+</hibernate-mapping>

@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <!--<property name="connection.datasource">java:comp/env/jdbc/ensembl_homo_sapiens_core_47_36i</property>-->
+
+        <!-- OR... (for testing only)...  -->
+	    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+	    <property name="connection.url">jdbc:mysql://ensembldb.ensembl.org:3306/test</property>
+	    <property name="connection.username">anonymous</property>
+	    <property name="connection.password"></property>
+	    <property name="connection.pool_size">20</property>
+
+        <property name="hibernate.show_sql">false</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
+        <property name="hibernate.jdbc.batch_size">20</property>
+        <property name="hibernate.current_session_context_class">org.hibernate.context.ManagedSessionContext</property>
+
+        <property name="ensembl.db">core</property>
+
+        <!-- Mapping files -->
+        <mapping resource="/uk/ac/ebi/ensh/core/model/Analysis.hbm.xml"/>
+        <mapping resource="/uk/ac/ebi/ensh/core/model/AnalysisDescription.hbm.xml"/>
+        <mapping resource="/uk/ac/ebi/ensh/core/model/AttributeType.hbm.xml"/>
+        <mapping resource="/uk/ac/ebi/ensh/core/model/CoordinateSystem.hbm.xml"/>
+        <mapping resource="/uk/ac/ebi/ensh/core/model/DensityType.hbm.xml"/>
+        <mapping resource="/uk/ac/ebi/ensh/core/model/Ditag.hbm.xml"/>
+        <mapping resource="/uk/ac/ebi/ensh/core/model/EnsemblObject.hbm.xml"/>
+        <mapping resource="/uk/ac/ebi/ensh/core/model/ExternalDB.hbm.xml"/>
+        <mapping resource="/uk/ac/ebi/ensh/core/model/Feature.hbm.xml"/>
+        <mapping resource="/uk/ac/ebi/ensh/core/model/GeneticMap.hbm.xml"/>
+        <mapping resource="/uk/ac/ebi/ensh/core/model/GeneticMarker.hbm.xml"/>
+        <mapping resource="/uk/ac/ebi/ensh/core/model/GeneticMarkerSynonym.hbm.xml"/>
+        <mapping resource="/uk/ac/ebi/ensh/core/model/Karyotype.hbm.xml"/>
+        <mapping resource="/uk/ac/ebi/ensh/core/model/ObjectXref.hbm.xml"/>
+        <mapping resource="/uk/ac/ebi/ensh/core/model/OligoArray.hbm.xml"/>
+        <mapping resource="/uk/ac/ebi/ensh/core/model/OligoProbe.hbm.xml"/>
+        <mapping resource="/uk/ac/ebi/ensh/core/model/ProteinFeature.hbm.xml"/>
+        <mapping resource="/uk/ac/ebi/ensh/core/model/QTL.hbm.xml"/>
+        <mapping resource="/uk/ac/ebi/ensh/core/model/QTLSynonym.hbm.xml"/>
+        <mapping resource="/uk/ac/ebi/ensh/core/model/RegulatoryFactor.hbm.xml"/>
+        <mapping resource="/uk/ac/ebi/ensh/core/model/RegulatorySearchRegion.hbm.xml"/>
+        <mapping resource="/uk/ac/ebi/ensh/core/model/RepeatConsensus.hbm.xml"/>
+        <mapping resource="/uk/ac/ebi/ensh/core/model/SequenceRegion.hbm.xml"/>
+        <mapping resource="/uk/ac/ebi/ensh/core/model/StableID.hbm.xml"/>
+        <mapping resource="/uk/ac/ebi/ensh/core/model/Xref.hbm.xml"/>
+
+        
+
+    </session-factory>
+
+</hibernate-configuration>

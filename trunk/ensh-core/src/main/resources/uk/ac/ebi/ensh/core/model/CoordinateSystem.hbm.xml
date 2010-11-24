@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="com.compomics.ensh.core.model.impl.CoordinateSystemImpl" table="coord_system" entity-name="CoordinateSystem">
+
+        <id name="id" type="integer" unsaved-value="null" column="coord_system_id">
+            <generator class="native"/>
+        </id>
+
+        <property name="name" not-null="true"/>
+        <property name="version"/>
+        <property name="rank" not-null="true"/>
+        <property name="attributes" column="attrib"/>
+        <set name="sequenceRegions" table="seq_region" inverse="true" sort="com.compomics.ensh.core.model.impl.SequenceRegionComparator">
+            <key column="coord_system_id"/>
+            <one-to-many entity-name="SequenceRegion"/>
+        </set>
+
+    </class>
+
+</hibernate-mapping>

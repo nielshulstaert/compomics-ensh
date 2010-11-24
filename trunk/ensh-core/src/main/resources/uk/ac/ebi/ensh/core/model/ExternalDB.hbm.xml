@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="com.compomics.ensh.core.model.impl.ExternalDBImpl" table="external_db" entity-name="ExternalDB">
+
+        <id name="id" type="integer" unsaved-value="null" column="external_db_id">
+            <generator class="native"/>
+        </id>
+        
+        <property name="name" column="db_name" not-null="true"/>
+        <property name="release"  column="db_release"/>
+        <property name="status" not-null="true"/>
+        <property name="primaryAccessionLinkable" column="dbprimary_acc_linkable" not-null="true"/>
+        <property name="displayLabelLinkable" column="display_label_linkable" not-null="true"/>
+        <property name="priority" not-null="true"/>
+        <property name="displayName" column="db_display_name"/>
+        <property name="type"/>
+        <property name="secondaryDbName" column="secondary_db_name"/>
+        <property name="secondaryDbTable" column="secondary_db_table"/>
+
+    </class>
+
+</hibernate-mapping>

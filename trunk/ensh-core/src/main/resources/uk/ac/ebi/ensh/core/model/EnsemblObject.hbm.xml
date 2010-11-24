@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="com.compomics.ensh.core.model.impl.GeneImpl" table="gene" entity-name="Gene">
+
+        <id name="id" type="integer" unsaved-value="null" column="gene_id">
+            <generator class="native"/>
+        </id>
+
+        <many-to-one name="stableId" entity-name="GeneStableID" column="gene_id" insert="false"
+                     update="false" not-null="true"/>
+        <many-to-one name="analysis" entity-name="Analysis" column="analysis_id" not-null="true"/>
+        <property name="biotype" not-null="true"/>
+        <component name="location" class="com.compomics.ensh.core.model.impl.StrandedLocationImpl">
+            <many-to-one name="sequenceRegion" entity-name="SequenceRegion" column="seq_region_id" not-null="true"/>
+            <property name="sequenceRegionStart" column="seq_region_start" not-null="true"/>
+            <property name="sequenceRegionEnd" column="seq_region_end" not-null="true"/>
+            <property name="sequenceRegionStrand" column="seq_region_strand" not-null="true"/>
+        </component>
+        <many-to-one name="displayXref" entity-name="Xref" column="display_xref_id"/>
+        <property name="source" not-null="true"/>
+        <property name="status"/>
+        <property name="description"/>
+        <property name="current" column="is_current" not-null="true"/>
+        <set name="transcripts" table="transcript" inverse="true">
+            <key column="gene_id"/>
+            <one-to-many entity-name="Transcript"/>
+        </set>
+        <map name="attributes" table="gene_attrib" order-by="attrib_type_id asc">
+            <key column="gene_id"/>
+            <map-key-many-to-many entity-name="AttributeType">
+                <column name="attrib_type_id"/>
+            </map-key-many-to-many>
+            <element column="value" type="string"/>
+        </map>
+        <set name="xrefs" table="object_xref" inverse="true">
+            <key column="ensembl_id"/>
+            <one-to-many entity-name="ObjectXref"/>
+        </set>
+
+    </class>
+
+    <class name="com.compomics.ensh.core.model.impl.ExonImpl" table="exon" entity-name="Exon">
+
+        <id name="id" type="integer" unsaved-value="null" column="exon_id">
+            <generator class="native"/>
+        </id>
+
+        <many-to-one name="stableId" entity-name="ExonStableID" column="exon_id" insert="false"
+                     update="false"/>
+        <component name="location" class="com.compomics.ensh.core.model.impl.StrandedLocationImpl">
+            <many-to-one name="sequenceRegion" entity-name="SequenceRegion" column="seq_region_id"/>
+            <property name="sequenceRegionStart" column="seq_region_start" not-null="true"/>
+            <property name="sequenceRegionEnd" column="seq_region_end" not-null="true"/>
+            <property name="sequenceRegionStrand" column="seq_region_strand" not-null="true"/>
+        </component>
+        <property name="phase" not-null="true"/>
+        <property name="endPhase" column="end_phase" not-null="true"/>
+        <property name="current" column="is_current" not-null="true"/>
+
+        <set name="supportingFeatures" table="supporting_feature">
+            <key column="exon_id" not-null="true"/>
+            <many-to-any meta-type="string" id-type="int">
+                <meta-value value="dna_align_feature" class="com.compomics.ensh.core.model.impl.DNAAlignmentFeature"/>
+                <meta-value value="protein_align_feature" class="com.compomics.ensh.core.model.impl.ProteinAlignmentFeature"/>
+                <column name="feature_type"/>
+                <column name="feature_id" not-null="true"/>
+            </many-to-any>
+        </set>
+
+        <set name="transcripts" table="exon_transcript" order-by="rank">
+            <key column="exon_id"/>
+            <many-to-many column="transcript_id" entity-name="Transcript"/>
+        </set>
+
+    </class>
+
+
+    <class name="com.compomics.ensh.core.model.impl.TranscriptImpl" table="transcript" entity-name="Transcript">
+
+        <id name="id" type="integer" unsaved-value="null" column="transcript_id">
+            <generator class="native"/>
+        </id>
+
+        <many-to-one name="stableId" entity-name="TranscriptStableID" column="transcript_id" insert="false" update="false"/>
+        <many-to-one name="gene" entity-name="Gene" column="gene_id"/>
+        <property name="biotype"/>
+        <many-to-one name="analysis" entity-name="Analysis" column="analysis_id"/>
+        <component name="location" class="com.compomics.ensh.core.model.impl.StrandedLocationImpl">
+            <many-to-one name="sequenceRegion" entity-name="SequenceRegion" column="seq_region_id"/>
+            <property name="sequenceRegionStart" column="seq_region_start"/>
+            <property name="sequenceRegionEnd" column="seq_region_end"/>
+            <property name="sequenceRegionStrand" column="seq_region_strand"/>
+        </component>
+        <many-to-one name="displayXref" entity-name="Xref" column="display_xref_id"/>
+        <property name="status"/>
+        <property name="description"/>
+        <property name="current" column="is_current"/>
+        <set name="exons" table="exon_transcript" inverse="true"
+             sort="com.compomics.ensh.core.model.impl.TranscriptExonComparator">
+            <key column="transcript_id"/>
+            <many-to-many column="exon_id" entity-name="Exon"/>
+        </set>
+        <set name="xrefs" table="object_xref" inverse="true">
+            <key column="ensembl_id"/>
+            <one-to-many entity-name="ObjectXref"/>
+        </set>
+        <map name="attributes" table="transcript_attrib" order-by="attrib_type_id asc">
+            <key column="transcript_id"/>
+            <map-key-many-to-many entity-name="AttributeType">
+                <column name="attrib_type_id"/>
+            </map-key-many-to-many>
+            <element column="value" type="string"/>
+        </map>
+
+    </class>
+
+    <class name="com.compomics.ensh.core.model.impl.TranslationImpl" table="translation" entity-name="Translation">
+
+        <id name="id" type="integer" unsaved-value="null" column="translation_id">
+            <generator class="native"/>
+        </id>
+
+        <many-to-one name="stableId" entity-name="TranslationStableID" column="translation_id" insert="false" update="false"/>
+        <many-to-one name="transcript" entity-name="Transcript" column="transcript_id"/>
+        <many-to-one name="startExon" entity-name="Exon" column="start_exon_id"/>
+        <property name="sequenceStart" column="seq_start"/>
+        <many-to-one name="endExon" entity-name="Exon" column="end_exon_id"/>
+        <property name="sequenceEnd" column="seq_end"/>
+        <set name="xrefs" table="object_xref" inverse="true">
+            <key column="ensembl_id"/>
+            <one-to-many entity-name="ObjectXref"/>
+        </set>
+        <set name="sequenceFeatures" table="protein_feature" inverse="true">
+            <key column="translation_id"/>
+            <one-to-many entity-name="ProteinFeature"/>
+        </set>
+        <map name="attributes" table="translation_attrib" order-by="attrib_type_id asc">
+            <key column="translation_id"/>
+            <map-key-many-to-many entity-name="AttributeType">
+                <column name="attrib_type_id"/>
+            </map-key-many-to-many>
+            <element column="value" type="string"/>
+        </map>
+
+    </class>
+
+
+</hibernate-mapping>
