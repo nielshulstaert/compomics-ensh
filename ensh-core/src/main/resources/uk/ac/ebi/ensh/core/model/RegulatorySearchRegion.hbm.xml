@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="com.compomics.ensh.core.model.impl.RegulatorySearchRegion" table="regulatory_search_region" entity-name="RegulatorySearchRegion">
+
+        <id name="id" type="int" unsaved-value="null" column="regulatory_search_region_id">
+            <generator class="native"/>
+        </id>
+
+        <property name="name"/>
+        <component name="location" class="com.compomics.ensh.core.model.impl.StrandedLocationImpl">
+            <many-to-one name="sequenceRegion" entity-name="SequenceRegion" column="seq_region_id"/>
+            <property name="sequenceRegionStart"  column="seq_region_start"/>
+            <property name="sequenceRegionEnd"  column="seq_region_end"/>
+            <property name="sequenceRegionStrand"  column="seq_region_strand"/>
+        </component>
+        <many-to-one name="analysis" entity-name="Analysis" column="analysis_id"/>
+
+    </class>
+
+</hibernate-mapping>

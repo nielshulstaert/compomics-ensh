@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="com.compomics.ensh.core.model.impl.KaryotypeImpl" table="karyotype" entity-name="Karyotype">
+
+        <id name="id" type="int" unsaved-value="null" column="karyotype_id">
+            <generator class="native"/>
+        </id>
+
+        <component name="location" class="com.compomics.ensh.core.model.impl.LocationImpl">
+            <many-to-one name="sequenceRegion" entity-name="SequenceRegion" column="seq_region_id" not-null="true"/>
+            <property name="sequenceRegionStart"  column="seq_region_start" not-null="true"/>
+            <property name="sequenceRegionEnd"  column="seq_region_end" not-null="true"/>
+        </component>
+        <property name="band" not-null="true"/>
+        <property name="stain" not-null="true"/>
+
+    </class>
+
+</hibernate-mapping>

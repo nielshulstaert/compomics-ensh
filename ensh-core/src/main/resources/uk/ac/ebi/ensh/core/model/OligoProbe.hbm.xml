@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="com.compomics.ensh.core.model.impl.OligoProbeImpl" table="oligo_probe" entity-name="OligoProbe" >
+
+        <composite-id>
+
+            <key-property name="probeId" column="oligo_probe_id" type="integer"/>
+            <key-property name="arrayId" column="oligo_array_id" type="integer"/>
+
+        </composite-id>
+
+        <many-to-one name="array" entity-name="OligoArray" column="oligo_array_id" insert="false" update="false"/>
+        <property name="probesetId" column="probeset"/>
+        <property name="name"/>
+        <property name="description"/>
+        <property name="length"/>
+
+    </class>
+
+</hibernate-mapping>
