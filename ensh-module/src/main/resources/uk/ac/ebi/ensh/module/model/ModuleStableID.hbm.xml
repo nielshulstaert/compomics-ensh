@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="com.compomics.ensh.core.model.impl.StableIDImpl" table="module_stable_id" entity-name="ModuleStableID">
+
+        <id name="ensemblObjectId" type="int" unsaved-value="null" column="module_id">
+            <generator class="native"/>
+        </id>
+
+        <property name="stableId" column="stable_id"/>
+        <property name="version"/>
+        <!--<property name="createdDate" column="created_date"  type="java.util.Date" not-null="false"/>-->
+        <!--<property name="modifiedDate" column="modified_date" type="java.util.Date" not-null="false"/>-->
+
+    </class>
+
+</hibernate-mapping>

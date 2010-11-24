@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="com.compomics.ensh.module.model.impl.ModuleImpl" table="biomodule" entity-name="Module">
+
+        <id name="id" type="integer" unsaved-value="null" column="module_id">
+            <generator class="native"/>
+        </id>
+
+        <property name="identifier" not-null="true"/>
+        <many-to-one name="stableId" entity-name="ModuleStableID" column="module_id" insert="false" update="false"/>
+        <property name="version" not-null="true"/>
+        <property name="name"/>
+        <property name="description"/>
+        <many-to-one name="moduleType" column="type_id" entity-name="ModuleType"/>
+        <many-to-one name="moduleSource" column="source_id" entity-name="ModuleSource"/>
+
+        <set name="components" table="biomodule_component">
+            <key column="module_id" not-null="true"/>
+            <many-to-many entity-name="Component" column="component_id"/>
+        </set>
+
+        <joined-subclass name="com.compomics.ensh.module.model.impl.Complex" table="biomodule_complex">
+                <key column="module_id"/>
+        </joined-subclass>
+
+        <joined-subclass name="com.compomics.ensh.module.model.impl.CoModulation" table="biomodule_comodulation">
+                <key column="module_id"/>
+        </joined-subclass>
+
+        <joined-subclass name="com.compomics.ensh.module.model.impl.CoExpression" table="biomodule_coexpression">
+                <key column="module_id"/>
+        </joined-subclass>
+
+        <joined-subclass name="com.compomics.ensh.module.model.impl.Process" table="biomodule_process">
+                <key column="module_id"/>
+        </joined-subclass>
+
+    </class>
+
+</hibernate-mapping>

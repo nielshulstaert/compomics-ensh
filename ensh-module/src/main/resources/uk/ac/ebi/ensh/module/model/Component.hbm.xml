@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="com.compomics.ensh.module.model.impl.ComponentImpl" table="component" entity-name="Component">
+
+        <id name="id" type="integer" unsaved-value="null" column="component_id">
+            <generator class="native"/>
+        </id>
+
+        <set name="modules" inverse="true" table="biomodule_component">
+            <key column="component_id" not-null="true"/>
+            <many-to-many entity-name="Module" column="module_id"/>
+        </set>
+
+        <joined-subclass name="com.compomics.ensh.module.model.impl.ProteinComponent" table="component_protein">
+                <key column="component_id"/>
+                <many-to-one name="object" column="translation_id" entity-name="Translation"/>
+        </joined-subclass>
+
+        <joined-subclass name="com.compomics.ensh.module.model.impl.GeneComponent" table="component_gene">
+                <key column="component_id"/>
+                <many-to-one name="object" column="gene_id" entity-name="Gene"/>
+        </joined-subclass>
+
+        <joined-subclass name="com.compomics.ensh.module.model.impl.TranscriptComponent" table="component_transcript">
+                <key column="component_id"/>
+                <many-to-one name="object" column="transcript_id" entity-name="Transcript"/>          
+        </joined-subclass>
+
+    </class>
+
+</hibernate-mapping>
