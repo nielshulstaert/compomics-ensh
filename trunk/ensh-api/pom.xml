@@ -1,0 +1,107 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.compomics.ensh</groupId>
+    <artifactId>ensh-api</artifactId>
+    <packaging>jar</packaging>
+    <version>0.1</version>
+    <name>ensembl-hibernate-api</name>
+    <url>http://maven.apache.org</url>
+
+    <parent>
+        <groupId>com.compomics.ensh</groupId>
+        <artifactId>ensh</artifactId>
+        <version>0.1</version>
+    </parent>
+
+
+    <dependencies>
+
+        <!--EnsH-->
+        <dependency>
+            <groupId>com.compomics.ensh</groupId>
+            <artifactId>ensh-core</artifactId>
+            <version>0.1</version>
+        </dependency>
+
+        <!--<dependency>-->
+        <!--<groupId>com.compomics.ensh</groupId>-->
+        <!--<artifactId>ensh-module</artifactId>-->
+        <!--<version>0.1</version>-->
+        <!--</dependency>-->
+
+        <dependency>
+            <groupId>com.compomics.ensh</groupId>
+            <artifactId>ensh-variation</artifactId>
+            <version>0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.compomics.ensh</groupId>
+            <artifactId>ensh-commons</artifactId>
+            <version>0.1</version>
+        </dependency>
+
+        <!--JUnit-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.3.1</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.15</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.5</source>
+                    <target>1.5</target>
+                    <!--<configuration>-->
+                    <!--<excludes>-->
+                    <!--<exclude>/uk/ac/ebi/ensh/playground/*.java</exclude>-->
+                    <!--</excludes>-->
+                    <!--</configuration>-->
+                </configuration>
+
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-idea-plugin</artifactId>
+                <configuration>
+                    <jdkName>1.6</jdkName>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <mode>development</mode>
+                            <url>${pom.url}</url>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+            <!--<plugin>-->
+            <!--<artifactId>maven-assembly-plugin</artifactId>-->
+            <!--<configuration>-->
+            <!--<descriptors>-->
+            <!--<descriptor>src/main/assembly/descriptor.xml</descriptor>-->
+            <!--</descriptors>-->
+            <!--</configuration>-->
+            <!--</plugin>-->
+        </plugins>
+    </build>
+
+</project>
