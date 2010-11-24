@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="com.compomics.ensh.variation.model.impl.TranscriptVariationImpl" table="transcript_variation" entity-name="TranscriptVariation">
+
+        <id name="id" type="integer" unsaved-value="null" column="transcript_variation_id">
+            <generator class="native"/>
+        </id>
+
+        <many-to-one name="transcript" entity-name="Transcript" column="transcript_id"/>
+        <property name="CDNAStart" column="cdna_start"/>
+        <property name="CDNAEnd" column="cdna_end"/>
+        <property name="translationStart" column="translation_start"/>
+        <property name="translationEnd" column="translation_end"/>
+        <property name="peptideAllele" column="peptide_allele_string"/>
+        <property name="consequenceType" column="consequence_type"/>
+                    
+    </class>
+
+</hibernate-mapping>
