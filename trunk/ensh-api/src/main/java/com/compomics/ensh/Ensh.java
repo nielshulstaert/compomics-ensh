@@ -1,14 +1,11 @@
 package com.compomics.ensh;
 
-
 import org.apache.log4j.Logger;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import com.compomics.ensh.db.EnsemblDataSource;
-import com.compomics.ensh.db.EnsemblDataSourceFactory;
 import com.compomics.ensh.db.EnsemblDatabaseType;
 import com.compomics.ensh.exception.EnshException;
 import com.compomics.ensh.util.HibernateUtil;
@@ -21,6 +18,8 @@ import java.sql.SQLException;
 import java.util.*;
 
 /**
+ * @TODO: JavaDoc missing
+ * 
  * Created by IntelliJ IDEA.<br/>
  * User: mmueller<br/>
  * Date: 21-Nov-2007<br/>
@@ -37,7 +36,6 @@ public abstract class Ensh {
     protected static Logger logger = Logger.getLogger(Ensh.class);
 
 
-
     static {
         configFiles = getHibernateConfigFiles();
     }
@@ -52,9 +50,7 @@ public abstract class Ensh {
      *                       an Exception occurs while creating the Hibernate configuration
      */
     public static SessionFactory getSessionFactory(int ncbiTaxonId) throws EnshException {
-
         return Ensh.getSessionFactory(ncbiTaxonId, 0);
-
     }
 
     /**
@@ -95,15 +91,10 @@ public abstract class Ensh {
             return sessionFactory;
 
         } catch (DocumentException e) {
-
             throw new EnshException("Exception while creating Hibernate configuration.", e);
-
         } catch (SQLException e) {
-
             throw new EnshException("Exception while creating Hibernate configuration.", e);
-
         }
-
     }
 
     /**
@@ -128,9 +119,7 @@ public abstract class Ensh {
         Configuration retVal = new Configuration();
 
         //add mappings from dependencies
-
         for (String configFile : configFiles) {
-
 
             String ensemblDb = HibernateUtil.getPropertyValue(configFile, "ensembl.db");
 
@@ -146,7 +135,8 @@ public abstract class Ensh {
                     versionString = "current";
                 }
 
-                logger.info("Database server does not provide Ensembl database of type'" + ensemblDatabaseType.toString().toLowerCase() + "' for species identified by NCBI taxon ID " + taxonId + ", release " + versionString + ". Ignoring mapping files.");
+                logger.info("Database server does not provide Ensembl database of type'" + ensemblDatabaseType.toString().toLowerCase()
+                        + "' for species identified by NCBI taxon ID " + taxonId + ", release " + versionString + ". Ignoring mapping files.");
 
             } else {
 
@@ -159,12 +149,9 @@ public abstract class Ensh {
 
                 //set schema of mapping resources and add them to the configuration
                 for (URL mappingResource : enshCoreMappingResources) {
-
                     Document d = HibernateUtil.setMappingCatalogName(mappingResource, schemaName);
                     retVal.addXML(d.asXML());
-
                 }
-
             }
         }
 
@@ -178,7 +165,6 @@ public abstract class Ensh {
         retVal.configure(XmlUtil.toOrgW3cDomDocument(hibernatConfigWithoutMapping));
 
         return retVal;
-
     }
 
 //    private static String getSchemaName(int taxonId, int version, EnsemblDatabaseType ensemblDb) throws DatabaseException {
@@ -230,17 +216,23 @@ public abstract class Ensh {
                 .getConnection();
 
         return new EnsemblDataSourceFactory(conn);
-
     }
 
+    /**
+     * @TODO: JavaDoc missing
+     *
+     * @param path
+     */
     public static void setHibernateConfigFile(String path) {
-
         hibernateConfigFile = path;
         configFiles = getHibernateConfigFiles();
-
-
     }
 
+    /**
+     * @TODO: JavaDoc missing
+     *
+     * @return
+     */
     private static List<String> getHibernateConfigFiles() {
 
         List<String> retVal = new ArrayList<String>();
@@ -262,7 +254,6 @@ public abstract class Ensh {
                     EnsemblDatabaseType ensemblDbType = EnsemblDatabaseType.valueOf(ensemblDb.toUpperCase());
                     ensemblDb2ConfigFile.put(ensemblDbType, configFile);
                 }
-
             }
 
             //add configuration files to the list in the order their mapping files have to be parsed
@@ -289,5 +280,4 @@ public abstract class Ensh {
 
         return retVal;
     }
-
 }

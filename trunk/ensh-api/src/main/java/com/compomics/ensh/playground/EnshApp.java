@@ -16,6 +16,9 @@ import java.util.Iterator;
 import java.util.Set;
 
 /**
+ * @TODO: JavaDoc missing
+ * @TODO: all code in this class has been commented out...
+ *
  * Created by IntelliJ IDEA.<br/>
  * User: mmueller<br/>
  * Date: 14-Dec-2007<br/>
