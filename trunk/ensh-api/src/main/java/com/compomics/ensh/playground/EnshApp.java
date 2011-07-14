@@ -1,19 +1,20 @@
 package com.compomics.ensh.playground;
 
+import com.compomics.ensh.Ensh;
+import com.compomics.ensh.exception.EnshException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import com.compomics.ensh.Ensh;
-import com.compomics.ensh.core.model.Translation;
-import com.compomics.ensh.exception.EnshException;
-//import com.compomics.ensh.module.model.Component;
-//import com.compomics.ensh.module.model.Module;
-//import com.compomics.ensh.module.model.impl.Complex;
-//import com.compomics.ensh.module.model.impl.ProteinComponent;
+import org.hibernate.mapping.Component;
 
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+
+//import com.compomics.ensh.module.model.Component;
+//import com.compomics.ensh.module.model.Module;
+//import com.compomics.ensh.module.model.impl.Complex;
+//import com.compomics.ensh.module.model.impl.ProteinComponent;
 
 /**
  * @TODO: JavaDoc missing
@@ -26,29 +27,29 @@ import java.util.Set;
  */
 public class EnshApp {
 
-//    public static void main(String[] args) {
-//
-//
-//        try {
-//
-//            SessionFactory sessionFactory = Ensh.getSessionFactory(4932);
-//
-//            Session session = sessionFactory.openSession();
-//
-//            Query q = session.createQuery("from Translation");
-//            Iterator iterator = q.iterate();
-//
-//            Set<Component> components = new HashSet<Component>();
-//
-//            session.beginTransaction();
-////            ModuleSource ms = new ModuleSourceImpl();
-////            ms.setName("test");
-////            session.saveOrUpdate(ms);
-//
-//            int counter = 0;
-//            while (iterator.hasNext()) {
-//
-//                Object o = iterator.next();
+    public static void main(String[] args) {
+
+
+        try {
+
+            SessionFactory sessionFactory = Ensh.getSessionFactory(9606);
+
+            Session session = sessionFactory.openSession();
+
+            Query q = session.createQuery("from TranslationEntity");
+            Iterator iterator = q.iterate();
+
+            Set<Component> components = new HashSet<Component>();
+
+            session.beginTransaction();
+//            ModuleSource ms = new ModuleSourceImpl();
+//            ms.setName("test");
+//            session.saveOrUpdate(ms);
+
+            int counter = 0;
+            while (iterator.hasNext()) {
+
+                Object o = iterator.next();
 //
 //                Component pc = new ProteinComponent((Translation) o);
 //
@@ -57,13 +58,13 @@ public class EnshApp {
 //                session.save(pc);
 //
 //                components.add(pc);
-//
-//                if (++counter % 10 == 0) {
-//
-//                    System.out.println("persisting module");
-//                    System.out.println("Components " + components);
+
+                if (++counter % 10 == 0) {
+
+                    System.out.println("persisting module");
+                    System.out.println("Components " + components);
 //                    Module m = new Complex("complex_" + counter, 0);
-//
+
 //                    for(Component c : components){
 //                        m.addComponent(c);
 //                    }
@@ -71,24 +72,24 @@ public class EnshApp {
 //                    //m.setModuleSource(ms);
 //
 //                    session.save(m);
-//
-//                    components.clear();
-//
-//                }
-//
-//                if (counter == 100) {
-//                    break;
-//                }
-//            }
-//
-//            session.getTransaction().commit();
-//
-//
-//            System.exit(1);
-//
-//        } catch (EnshException e) {
-//            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-//        }
-//
-//    }
+
+                    components.clear();
+
+                }
+
+                if (counter == 100) {
+                    break;
+                }
+            }
+
+            session.getTransaction().commit();
+
+
+            System.exit(1);
+
+        } catch (EnshException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+
+    }
 }

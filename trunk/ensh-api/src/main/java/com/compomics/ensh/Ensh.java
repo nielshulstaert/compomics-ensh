@@ -27,7 +27,7 @@ import java.util.*;
  */
 public abstract class Ensh {
 
-    private static String hibernateConfigFile = "/uk/ac/ebi/ensh/hibernate.cfg.xml";
+    private static String hibernateConfigFile = "/com/compomics/ensh/hibernate.cfg.xml";
     private static List<String> configFiles;
     private static Map<Integer, Map<Integer, SessionFactory>> sessionFactoryCache = new HashMap<Integer, Map<Integer, SessionFactory>>();
 
@@ -250,6 +250,7 @@ public abstract class Ensh {
             for (String configFile : HibernateUtil.getPropertyValuesByPrefix(hibernateConfigFile, "dependency.hibernate.cfg")) {
 
                 String ensemblDb = HibernateUtil.getPropertyValue(configFile, "ensembl.db");
+//                String ensemblDb = "module";
                 if (ensemblDb != null) {
                     EnsemblDatabaseType ensemblDbType = EnsemblDatabaseType.valueOf(ensemblDb.toUpperCase());
                     ensemblDb2ConfigFile.put(ensemblDbType, configFile);
