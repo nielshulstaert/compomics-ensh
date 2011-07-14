@@ -4,14 +4,14 @@
     <groupId>com.compomics.ensh</groupId>
     <artifactId>ensh-api</artifactId>
     <packaging>jar</packaging>
-    <version>0.1</version>
+    <version>0.2</version>
     <name>ensembl-hibernate-api</name>
     <url>http://maven.apache.org</url>
 
     <parent>
         <groupId>com.compomics.ensh</groupId>
         <artifactId>ensh</artifactId>
-        <version>0.1</version>
+        <version>0.2</version>
     </parent>
 
 
@@ -21,25 +21,25 @@
         <dependency>
             <groupId>com.compomics.ensh</groupId>
             <artifactId>ensh-core</artifactId>
-            <version>0.1</version>
+            <version>0.2</version>
         </dependency>
 
-        <!--<dependency>-->
-        <!--<groupId>com.compomics.ensh</groupId>-->
-        <!--<artifactId>ensh-module</artifactId>-->
-        <!--<version>0.1</version>-->
-        <!--</dependency>-->
+        <dependency>
+        <groupId>com.compomics.ensh</groupId>
+        <artifactId>ensh-module</artifactId>
+        <version>0.2</version>
+        </dependency>
 
         <dependency>
             <groupId>com.compomics.ensh</groupId>
             <artifactId>ensh-variation</artifactId>
-            <version>0.1</version>
+            <version>0.2</version>
         </dependency>
 
         <dependency>
             <groupId>com.compomics.ensh</groupId>
             <artifactId>ensh-commons</artifactId>
-            <version>0.1</version>
+            <version>0.2</version>
         </dependency>
 
         <!--JUnit-->

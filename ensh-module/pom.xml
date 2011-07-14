@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.compomics.ensh</groupId>
     <artifactId>ensh-module</artifactId>
-    <version>0.1</version>
+    <version>0.2</version>
     <packaging>jar</packaging>
     <name>ensembl-hibernate-module</name>
     <url>http://maven.apache.org</url>
@@ -11,7 +11,7 @@
     <parent>
 	    <groupId>com.compomics.ensh</groupId>
 	    <artifactId>ensh</artifactId>
-	    <version>0.1</version>
+	    <version>0.2</version>
     </parent>
     
     <dependencies>
@@ -20,14 +20,14 @@
         <dependency>
             <groupId>com.compomics.ensh</groupId>
             <artifactId>ensh-core</artifactId>
-            <version>0.1</version>
+            <version>0.2</version>
         </dependency>
 
         <!--Ensh Commons-->
         <dependency>
             <groupId>com.compomics.ensh</groupId>
             <artifactId>ensh-commons</artifactId>
-            <version>0.1</version>
+            <version>0.2</version>
         </dependency>
 
         <!--JUnit-->
@@ -38,12 +38,12 @@
             <scope>test</scope>
         </dependency>
 
-        <!--Eliot IO-->
-        <dependency>
-            <groupId>com.compomics.eliot</groupId>
-            <artifactId>eliot-io</artifactId>
-            <version>0.1</version>
-        </dependency>
+        <!--&lt;!&ndash;Eliot IO&ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId></groupId>-->
+            <!--<artifactId>eliot-io</artifactId>-->
+            <!--<version>0.1</version>-->
+        <!--</dependency>-->
 
     </dependencies>
 
