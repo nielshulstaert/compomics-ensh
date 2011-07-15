@@ -1,6 +1,6 @@
 package com.compomics.ensh.module.model.impl;
 
-import com.compomics.ensh.core.model.Gene;
+import com.compomics.ensh.core.GeneEntity;
 import com.compomics.ensh.module.model.Component;
 
 /**
@@ -9,12 +9,12 @@ import com.compomics.ensh.module.model.Component;
  * Date: 13-Dec-2007<br/>
  * Time: 14:54:21<br/>
  */
-public class GeneComponent extends ComponentImpl<Gene> implements Component<Gene> {
+public class GeneComponent extends ComponentImpl<GeneEntity> implements Component<GeneEntity> {
 
     public GeneComponent() {
     }
 
-    public GeneComponent(Gene object) {
+    public GeneComponent(GeneEntity object) {
         super(object);
     }
     

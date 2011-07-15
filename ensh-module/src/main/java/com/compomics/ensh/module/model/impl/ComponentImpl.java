@@ -1,6 +1,5 @@
 package com.compomics.ensh.module.model.impl;
 
-import com.compomics.ensh.core.model.Transcript;
 import com.compomics.ensh.module.model.Component;
 
 /**

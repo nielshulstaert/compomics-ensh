@@ -1,7 +1,6 @@
 package com.compomics.ensh.module.model.impl;
 
-import com.compomics.ensh.core.model.Translation;
-import com.compomics.ensh.core.model.impl.TranslationImpl;
+import com.compomics.ensh.core.TranslationEntity;
 import com.compomics.ensh.module.model.Component;
 
 /**
@@ -10,12 +9,12 @@ import com.compomics.ensh.module.model.Component;
  * Date: 11-Dec-2007<br/>
  * Time: 18:19:20<br/>
  */
-public class ProteinComponent extends ComponentImpl<Translation> implements Component<Translation> {
+public class ProteinComponent extends ComponentImpl<TranslationEntity> implements Component<TranslationEntity> {
 
     public ProteinComponent() {
     }
 
-    public ProteinComponent(Translation object) {
+    public ProteinComponent(TranslationEntity object) {
         super(object);
     }
 

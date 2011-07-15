@@ -24,11 +24,11 @@
             <version>0.2</version>
         </dependency>
 
-        <dependency>
-        <groupId>com.compomics.ensh</groupId>
-        <artifactId>ensh-module</artifactId>
-        <version>0.2</version>
-        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>com.compomics.ensh</groupId>-->
+        <!--<artifactId>ensh-module</artifactId>-->
+        <!--<version>0.2</version>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>com.compomics.ensh</groupId>
