@@ -140,19 +140,15 @@ public abstract class HibernateUtil {
         Document d = XmlUtil.parse(HibernateUtil.class.getResource(hibernateConfigurationFile));
         Element root = d.getRootElement();
         Element sessionFactory = root.element("session-factory");
-        for (Iterator i = sessionFactory.elementIterator("property"); i.hasNext();) {
 
+        for (Iterator i = sessionFactory.elementIterator("property"); i.hasNext();) {
             Element e = (Element) i.next();
             String name = e.attributeValue("name");
             if (name.startsWith(propertyNameAttributePrefix)) {
-
                 retVal.add(e.getText());
-
             }
-
         }
 
         return retVal;
     }
-
 }

@@ -1,6 +1,6 @@
 package com.compomics.ensh.variation.model.impl;
 
-import com.compomics.ensh.core.model.Transcript;
+import com.compomics.ensh.core.TranscriptEntity;
 import com.compomics.ensh.variation.model.TranscriptVariation;
 
 /**
@@ -12,7 +12,7 @@ import com.compomics.ensh.variation.model.TranscriptVariation;
 public class TranscriptVariationImpl implements TranscriptVariation {
 
     int id;
-    Transcript transcript;
+    TranscriptEntity transcript;
     Integer cDNAStart;
     Integer cDNAEnd;
     Integer translationStart;
@@ -38,11 +38,11 @@ consequence_type	1	set
         this.id = id;
     }
 
-    public Transcript getTranscript() {
+    public TranscriptEntity getTranscript() {
         return transcript;
     }
 
-    public void setTranscript(Transcript transcript) {
+    public void setTranscript(TranscriptEntity transcript) {
         this.transcript = transcript;
     }
 
@@ -97,7 +97,7 @@ consequence_type	1	set
 
     public String toString() {
         return "TranscriptVariationImpl{" +
-                "transcript=" + transcript.getStableId() +
+                "transcript=" + transcript.getTranscriptId() +
                 ", cDNAStart=" + cDNAStart +
                 ", cDNAEnd=" + cDNAEnd +
                 ", translationStart=" + translationStart +

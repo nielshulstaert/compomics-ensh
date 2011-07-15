@@ -1,6 +1,7 @@
 package com.compomics.ensh.playground;
 
 import com.compomics.ensh.Ensh;
+import com.compomics.ensh.core.AnalysisEntity;
 import com.compomics.ensh.exception.EnshException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -19,7 +20,7 @@ import java.util.Set;
 /**
  * @TODO: JavaDoc missing
  * @TODO: all code in this class has been commented out...
- *
+ * <p/>
  * Created by IntelliJ IDEA.<br/>
  * User: mmueller<br/>
  * Date: 14-Dec-2007<br/>
@@ -32,11 +33,11 @@ public class EnshApp {
 
         try {
 
-            SessionFactory sessionFactory = Ensh.getSessionFactory(9606);
+            SessionFactory sessionFactory = Ensh.getSessionFactory(9606, 63);
 
             Session session = sessionFactory.openSession();
 
-            Query q = session.createQuery("from TranslationEntity");
+            Query q = session.createQuery("from AnalysisEntity");
             Iterator iterator = q.iterate();
 
             Set<Component> components = new HashSet<Component>();
@@ -49,8 +50,10 @@ public class EnshApp {
             int counter = 0;
             while (iterator.hasNext()) {
 
-                Object o = iterator.next();
-//
+//                TranslationEntity lTranslationEntity = (TranslationEntity) iterator.next();
+                AnalysisEntity lAnalysisEntity = (AnalysisEntity) iterator.next();
+                System.out.println(lAnalysisEntity.getDb());
+
 //                Component pc = new ProteinComponent((Translation) o);
 //
 //                System.out.println(pc.getObject());

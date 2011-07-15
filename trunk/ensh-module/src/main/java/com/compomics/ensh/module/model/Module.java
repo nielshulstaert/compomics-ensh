@@ -1,6 +1,6 @@
 package com.compomics.ensh.module.model;
 
-import com.compomics.ensh.core.model.StableID;
+import com.compomics.ensh.core.StableIdEventEntity;
 
 import java.util.Set;
 
@@ -16,9 +16,9 @@ public interface Module {
 
     void setIdentifier(String identifier);
 
-    StableID getStableId();
+    StableIdEventEntity getStableId();
 
-    void setStableId(StableID stableId);
+    void setStableId(StableIdEventEntity stableId);
 
     int getVersion();
 
