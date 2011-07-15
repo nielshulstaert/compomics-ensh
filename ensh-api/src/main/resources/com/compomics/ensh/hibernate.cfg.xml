@@ -11,7 +11,7 @@
 
         <!-- OR... (for testing only)...  -->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://ensembldb.ensembl.org:3306/homo_sapiens_core_47_36i</property>
+        <property name="connection.url">jdbc:mysql://ensembldb.ensembl.org:5306/</property>
         <property name="connection.username">anonymous</property>
         <property name="connection.pool_size">20</property>
 

@@ -1,6 +1,6 @@
 package com.compomics.ensh.variation.model;
 
-import com.compomics.ensh.core.model.Transcript;
+import com.compomics.ensh.core.TranscriptEntity;
 
 /**
  * Created by IntelliJ IDEA.<br/>
@@ -22,9 +22,9 @@ peptide_allele_string	12	varchar
 consequence_type	1	set
      */
 
-    public Transcript getTranscript();
+    public TranscriptEntity getTranscript();
 
-    public void setTranscript(Transcript transcript);
+    public void setTranscript(TranscriptEntity transcript);
 
     int getCDNAStart();
 

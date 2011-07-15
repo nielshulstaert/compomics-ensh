@@ -1,11 +1,11 @@
 package com.compomics.ensh.module.model.impl;
 
-import test.Testable;
-import com.compomics.ensh.core.model.StableID;
+import com.compomics.ensh.core.StableIdEventEntity;
 import com.compomics.ensh.module.model.Component;
 import com.compomics.ensh.module.model.Module;
 import com.compomics.ensh.module.model.ModuleSource;
 import com.compomics.ensh.module.model.ModuleType;
+import test.Testable;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -20,7 +20,7 @@ public abstract class AbstractModule implements Module {
 
     protected int id;
     protected String identifier;
-    protected StableID stableID;
+    protected StableIdEventEntity stableID;
     protected int version;
     protected String name;
     protected String description;
@@ -58,11 +58,11 @@ public abstract class AbstractModule implements Module {
         this.identifier = identifier;
     }
 
-    public StableID getStableId() {
+    public StableIdEventEntity getStableId() {
         return stableID;
     }
 
-    public void setStableId(StableID stableID) {
+    public void setStableId(StableIdEventEntity stableID) {
         this.stableID = stableID;
     }
 

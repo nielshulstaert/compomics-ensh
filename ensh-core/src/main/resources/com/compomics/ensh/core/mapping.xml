@@ -1,0 +1,633 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.compomics.ensh.core.AltAlleleEntity" table="alt_allele" catalog="homo_sapiens_core_63_37">
+        <id name="altAlleleId" column="alt_allele_id"/>
+        <property name="geneId" column="gene_id"/>
+    </class>
+    <class name="com.compomics.ensh.core.AnalysisEntity" table="analysis" catalog="homo_sapiens_core_63_37">
+        <id name="analysisId" column="analysis_id"/>
+        <property name="created" column="created"/>
+        <property name="logicName" column="logic_name"/>
+        <property name="db" column="db"/>
+        <property name="dbVersion" column="db_version"/>
+        <property name="dbFile" column="db_file"/>
+        <property name="program" column="program"/>
+        <property name="programVersion" column="program_version"/>
+        <property name="programFile" column="program_file"/>
+        <property name="parameters" column="parameters"/>
+        <property name="module" column="module"/>
+        <property name="moduleVersion" column="module_version"/>
+        <property name="gffSource" column="gff_source"/>
+        <property name="gffFeature" column="gff_feature"/>
+    </class>
+    <!--<class name="com.compomics.ensh.core.AnalysisDescriptionEntity" table="analysis_description"-->
+           <!--catalog="homo_sapiens_core_63_37">-->
+        <!--<property name="analysisId" column="analysis_id"/>-->
+        <!--<property name="description" column="description"/>-->
+        <!--<property name="displayLabel" column="display_label"/>-->
+        <!--<property name="displayable" column="displayable"/>-->
+        <!--<property name="webData" column="web_data"/>-->
+    <!--</class>-->
+    <!--<class name="com.compomics.ensh.core.AssemblyEntity" table="assembly" catalog="homo_sapiens_core_63_37">-->
+        <!--<property name="asmSeqRegionId" column="asm_seq_region_id"/>-->
+        <!--<property name="cmpSeqRegionId" column="cmp_seq_region_id"/>-->
+        <!--<property name="asmStart" column="asm_start"/>-->
+        <!--<property name="asmEnd" column="asm_end"/>-->
+        <!--<property name="cmpStart" column="cmp_start"/>-->
+        <!--<property name="cmpEnd" column="cmp_end"/>-->
+        <!--<property name="ori" column="ori"/>-->
+    <!--</class>-->
+    <class name="com.compomics.ensh.core.AssemblyExceptionEntity" table="assembly_exception"
+           catalog="homo_sapiens_core_63_37">
+        <id name="assemblyExceptionId" column="assembly_exception_id"/>
+        <property name="seqRegionId" column="seq_region_id"/>
+        <property name="seqRegionStart" column="seq_region_start"/>
+        <property name="seqRegionEnd" column="seq_region_end"/>
+        <property name="excType" column="exc_type"/>
+        <property name="excSeqRegionId" column="exc_seq_region_id"/>
+        <property name="excSeqRegionStart" column="exc_seq_region_start"/>
+        <property name="excSeqRegionEnd" column="exc_seq_region_end"/>
+        <property name="ori" column="ori"/>
+    </class>
+    <class name="com.compomics.ensh.core.AttribTypeEntity" table="attrib_type" catalog="homo_sapiens_core_63_37">
+        <id name="attribTypeId" column="attrib_type_id"/>
+        <property name="code" column="code"/>
+        <property name="name" column="name"/>
+        <property name="description" column="description"/>
+    </class>
+    <class name="com.compomics.ensh.core.CoordSystemEntity" table="coord_system" catalog="homo_sapiens_core_63_37">
+        <id name="coordSystemId" column="coord_system_id"/>
+        <property name="speciesId" column="species_id"/>
+        <property name="name" column="name"/>
+        <property name="version" column="version"/>
+        <property name="rank" column="rank"/>
+        <property name="attrib" column="attrib"/>
+    </class>
+    <class name="com.compomics.ensh.core.DensityFeatureEntity" table="density_feature"
+           catalog="homo_sapiens_core_63_37">
+        <id name="densityFeatureId" column="density_feature_id"/>
+        <property name="densityTypeId" column="density_type_id"/>
+        <property name="seqRegionId" column="seq_region_id"/>
+        <property name="seqRegionStart" column="seq_region_start"/>
+        <property name="seqRegionEnd" column="seq_region_end"/>
+        <property name="densityValue" column="density_value"/>
+    </class>
+    <class name="com.compomics.ensh.core.DensityTypeEntity" table="density_type" catalog="homo_sapiens_core_63_37">
+        <id name="densityTypeId" column="density_type_id"/>
+        <property name="analysisId" column="analysis_id"/>
+        <property name="blockSize" column="block_size"/>
+        <property name="regionFeatures" column="region_features"/>
+        <property name="valueType" column="value_type"/>
+    </class>
+    <class name="com.compomics.ensh.core.DependentXrefEntity" table="dependent_xref" catalog="homo_sapiens_core_63_37">
+        <id name="objectXrefId" column="object_xref_id"/>
+        <property name="masterXrefId" column="master_xref_id"/>
+        <property name="dependentXrefId" column="dependent_xref_id"/>
+    </class>
+    <class name="com.compomics.ensh.core.DitagEntity" table="ditag" catalog="homo_sapiens_core_63_37">
+        <id name="ditagId" column="ditag_id"/>
+        <property name="name" column="name"/>
+        <property name="type" column="type"/>
+        <property name="tagCount" column="tag_count"/>
+        <property name="sequence" column="sequence"/>
+    </class>
+    <class name="com.compomics.ensh.core.DitagFeatureEntity" table="ditag_feature" catalog="homo_sapiens_core_63_37">
+        <id name="ditagFeatureId" column="ditag_feature_id"/>
+        <property name="ditagId" column="ditag_id"/>
+        <property name="ditagPairId" column="ditag_pair_id"/>
+        <property name="seqRegionId" column="seq_region_id"/>
+        <property name="seqRegionStart" column="seq_region_start"/>
+        <property name="seqRegionEnd" column="seq_region_end"/>
+        <property name="seqRegionStrand" column="seq_region_strand"/>
+        <property name="analysisId" column="analysis_id"/>
+        <property name="hitStart" column="hit_start"/>
+        <property name="hitEnd" column="hit_end"/>
+        <property name="hitStrand" column="hit_strand"/>
+        <property name="cigarLine" column="cigar_line"/>
+        <property name="ditagSide" column="ditag_side"/>
+    </class>
+    <class name="com.compomics.ensh.core.DnaEntity" table="dna" catalog="homo_sapiens_core_63_37">
+        <id name="seqRegionId" column="seq_region_id"/>
+        <property name="sequence" column="sequence"/>
+    </class>
+    <class name="com.compomics.ensh.core.DnaAlignFeatureEntity" table="dna_align_feature"
+           catalog="homo_sapiens_core_63_37">
+        <id name="dnaAlignFeatureId" column="dna_align_feature_id"/>
+        <property name="seqRegionId" column="seq_region_id"/>
+        <property name="seqRegionStart" column="seq_region_start"/>
+        <property name="seqRegionEnd" column="seq_region_end"/>
+        <property name="seqRegionStrand" column="seq_region_strand"/>
+        <property name="hitStart" column="hit_start"/>
+        <property name="hitEnd" column="hit_end"/>
+        <property name="hitStrand" column="hit_strand"/>
+        <property name="hitName" column="hit_name"/>
+        <property name="analysisId" column="analysis_id"/>
+        <property name="score" column="score"/>
+        <property name="evalue" column="evalue"/>
+        <property name="percIdent" column="perc_ident"/>
+        <property name="cigarLine" column="cigar_line"/>
+        <property name="externalDbId" column="external_db_id"/>
+        <property name="hcoverage" column="hcoverage"/>
+        <property name="externalData" column="external_data"/>
+        <property name="pairDnaAlignFeatureId" column="pair_dna_align_feature_id"/>
+    </class>
+    <!--<class name="com.compomics.ensh.core.DnacEntity" table="dnac" catalog="homo_sapiens_core_63_37">-->
+        <!--<id name="seqRegionId" column="seq_region_id"/>-->
+        <!--<property name="sequence" column="sequence"/>-->
+        <!--<property name="nLine" column="n_line"/>-->
+    <!--</class>-->
+    <class name="com.compomics.ensh.core.ExonEntity" table="exon" catalog="homo_sapiens_core_63_37">
+        <id name="exonId" column="exon_id"/>
+        <property name="seqRegionId" column="seq_region_id"/>
+        <property name="seqRegionStart" column="seq_region_start"/>
+        <property name="seqRegionEnd" column="seq_region_end"/>
+        <property name="seqRegionStrand" column="seq_region_strand"/>
+        <property name="phase" column="phase"/>
+        <property name="endPhase" column="end_phase"/>
+        <property name="isCurrent" column="is_current"/>
+        <property name="isConstitutive" column="is_constitutive"/>
+    </class>
+    <class name="com.compomics.ensh.core.ExonStableIdEntity" table="exon_stable_id" catalog="homo_sapiens_core_63_37">
+        <id name="exonId" column="exon_id"/>
+        <property name="stableId" column="stable_id"/>
+        <property name="version" column="version"/>
+        <property name="createdDate" column="created_date"/>
+        <property name="modifiedDate" column="modified_date"/>
+    </class>
+    <class name="com.compomics.ensh.core.ExonTranscriptEntity" table="exon_transcript"
+           catalog="homo_sapiens_core_63_37">
+        <composite-id mapped="true" class="com.compomics.ensh.core.ExonTranscriptEntityPK">
+            <key-property name="exonId" column="exon_id"/>
+            <key-property name="transcriptId" column="transcript_id"/>
+            <key-property name="rank" column="rank"/>
+        </composite-id>
+    </class>
+    <class name="com.compomics.ensh.core.ExternalDbEntity" table="external_db" catalog="homo_sapiens_core_63_37">
+        <id name="externalDbId" column="external_db_id"/>
+        <property name="dbName" column="db_name"/>
+        <property name="dbRelease" column="db_release"/>
+        <property name="status" column="status"/>
+        <property name="priority" column="priority"/>
+        <property name="dbDisplayName" column="db_display_name"/>
+        <property name="type" column="type"/>
+        <property name="secondaryDbName" column="secondary_db_name"/>
+        <property name="secondaryDbTable" column="secondary_db_table"/>
+        <property name="description" column="description"/>
+    </class>
+    <class name="com.compomics.ensh.core.ExternalSynonymEntity" table="external_synonym"
+           catalog="homo_sapiens_core_63_37">
+        <composite-id mapped="true" class="com.compomics.ensh.core.ExternalSynonymEntityPK">
+            <key-property name="xrefId" column="xref_id"/>
+            <key-property name="synonym" column="synonym"/>
+        </composite-id>
+    </class>
+    <class name="com.compomics.ensh.core.GeneEntity" table="gene" catalog="homo_sapiens_core_63_37">
+        <id name="geneId" column="gene_id"/>
+        <property name="biotype" column="biotype"/>
+        <property name="analysisId" column="analysis_id"/>
+        <property name="seqRegionId" column="seq_region_id"/>
+        <property name="seqRegionStart" column="seq_region_start"/>
+        <property name="seqRegionEnd" column="seq_region_end"/>
+        <property name="seqRegionStrand" column="seq_region_strand"/>
+        <property name="displayXrefId" column="display_xref_id"/>
+        <property name="source" column="source"/>
+        <property name="status" column="status"/>
+        <property name="description" column="description"/>
+        <property name="isCurrent" column="is_current"/>
+        <property name="canonicalTranscriptId" column="canonical_transcript_id"/>
+        <property name="canonicalAnnotation" column="canonical_annotation"/>
+    </class>
+    <!--<class name="com.compomics.ensh.core.GeneArchiveEntity" table="gene_archive" catalog="homo_sapiens_core_63_37">-->
+        <!--<property name="geneStableId" column="gene_stable_id"/>-->
+        <!--<property name="geneVersion" column="gene_version"/>-->
+        <!--<property name="transcriptStableId" column="transcript_stable_id"/>-->
+        <!--<property name="transcriptVersion" column="transcript_version"/>-->
+        <!--<property name="translationStableId" column="translation_stable_id"/>-->
+        <!--<property name="translationVersion" column="translation_version"/>-->
+        <!--<property name="peptideArchiveId" column="peptide_archive_id"/>-->
+        <!--<property name="mappingSessionId" column="mapping_session_id"/>-->
+    <!--</class>-->
+    <!--<class name="com.compomics.ensh.core.GeneAttribEntity" table="gene_attrib" catalog="homo_sapiens_core_63_37">-->
+        <!--<property name="geneId" column="gene_id"/>-->
+        <!--<property name="attribTypeId" column="attrib_type_id"/>-->
+        <!--<property name="value" column="value"/>-->
+    <!--</class>-->
+    <class name="com.compomics.ensh.core.GeneStableIdEntity" table="gene_stable_id" catalog="homo_sapiens_core_63_37">
+        <id name="geneId" column="gene_id"/>
+        <property name="stableId" column="stable_id"/>
+        <property name="version" column="version"/>
+        <property name="createdDate" column="created_date"/>
+        <property name="modifiedDate" column="modified_date"/>
+    </class>
+    <class name="com.compomics.ensh.core.IdentityXrefEntity" table="identity_xref" catalog="homo_sapiens_core_63_37">
+        <id name="objectXrefId" column="object_xref_id"/>
+        <property name="xrefIdentity" column="xref_identity"/>
+        <property name="ensemblIdentity" column="ensembl_identity"/>
+        <property name="xrefStart" column="xref_start"/>
+        <property name="xrefEnd" column="xref_end"/>
+        <property name="ensemblStart" column="ensembl_start"/>
+        <property name="ensemblEnd" column="ensembl_end"/>
+        <property name="cigarLine" column="cigar_line"/>
+        <property name="score" column="score"/>
+        <property name="evalue" column="evalue"/>
+    </class>
+    <!--<class name="com.compomics.ensh.core.InterproEntity" table="interpro" catalog="homo_sapiens_core_63_37">-->
+        <!--<property name="interproAc" column="interpro_ac"/>-->
+        <!--<property name="id" column="id"/>-->
+    <!--</class>-->
+    <class name="com.compomics.ensh.core.KaryotypeEntity" table="karyotype" catalog="homo_sapiens_core_63_37">
+        <id name="karyotypeId" column="karyotype_id"/>
+        <property name="seqRegionId" column="seq_region_id"/>
+        <property name="seqRegionStart" column="seq_region_start"/>
+        <property name="seqRegionEnd" column="seq_region_end"/>
+        <property name="band" column="band"/>
+        <property name="stain" column="stain"/>
+    </class>
+    <class name="com.compomics.ensh.core.MapEntity" table="map" catalog="homo_sapiens_core_63_37">
+        <id name="mapId" column="map_id"/>
+        <property name="mapName" column="map_name"/>
+    </class>
+    <class name="com.compomics.ensh.core.MappingSessionEntity" table="mapping_session"
+           catalog="homo_sapiens_core_63_37">
+        <id name="mappingSessionId" column="mapping_session_id"/>
+        <property name="oldDbName" column="old_db_name"/>
+        <property name="newDbName" column="new_db_name"/>
+        <property name="oldRelease" column="old_release"/>
+        <property name="newRelease" column="new_release"/>
+        <property name="oldAssembly" column="old_assembly"/>
+        <property name="newAssembly" column="new_assembly"/>
+        <property name="created" column="created"/>
+    </class>
+    <class name="com.compomics.ensh.core.MappingSetEntity" table="mapping_set" catalog="homo_sapiens_core_63_37">
+        <id name="schemaBuild" column="schema_build"/>
+        <property name="mappingSetId" column="mapping_set_id"/>
+    </class>
+    <class name="com.compomics.ensh.core.MarkerEntity" table="marker" catalog="homo_sapiens_core_63_37">
+        <id name="markerId" column="marker_id"/>
+        <property name="displayMarkerSynonymId" column="display_marker_synonym_id"/>
+        <property name="leftPrimer" column="left_primer"/>
+        <property name="rightPrimer" column="right_primer"/>
+        <property name="minPrimerDist" column="min_primer_dist"/>
+        <property name="maxPrimerDist" column="max_primer_dist"/>
+        <property name="priority" column="priority"/>
+        <property name="type" column="type"/>
+    </class>
+    <class name="com.compomics.ensh.core.MarkerFeatureEntity" table="marker_feature" catalog="homo_sapiens_core_63_37">
+        <id name="markerFeatureId" column="marker_feature_id"/>
+        <property name="markerId" column="marker_id"/>
+        <property name="seqRegionId" column="seq_region_id"/>
+        <property name="seqRegionStart" column="seq_region_start"/>
+        <property name="seqRegionEnd" column="seq_region_end"/>
+        <property name="analysisId" column="analysis_id"/>
+        <property name="mapWeight" column="map_weight"/>
+    </class>
+    <class name="com.compomics.ensh.core.MarkerMapLocationEntity" table="marker_map_location"
+           catalog="homo_sapiens_core_63_37">
+        <composite-id mapped="true" class="com.compomics.ensh.core.MarkerMapLocationEntityPK">
+            <key-property name="markerId" column="marker_id"/>
+            <key-property name="mapId" column="map_id"/>
+        </composite-id>
+        <property name="chromosomeName" column="chromosome_name"/>
+        <property name="markerSynonymId" column="marker_synonym_id"/>
+        <property name="position" column="position"/>
+        <property name="lodScore" column="lod_score"/>
+    </class>
+    <class name="com.compomics.ensh.core.MarkerSynonymEntity" table="marker_synonym" catalog="homo_sapiens_core_63_37">
+        <id name="markerSynonymId" column="marker_synonym_id"/>
+        <property name="markerId" column="marker_id"/>
+        <property name="source" column="source"/>
+        <property name="name" column="name"/>
+    </class>
+    <class name="com.compomics.ensh.core.MetaEntity" table="meta" catalog="homo_sapiens_core_63_37">
+        <id name="metaId" column="meta_id"/>
+        <property name="speciesId" column="species_id"/>
+        <property name="metaKey" column="meta_key"/>
+        <property name="metaValue" column="meta_value"/>
+    </class>
+    <!--<class name="com.compomics.ensh.core.MetaCoordEntity" table="meta_coord" catalog="homo_sapiens_core_63_37">-->
+        <!--<property name="tableName" column="table_name"/>-->
+        <!--<property name="coordSystemId" column="coord_system_id"/>-->
+        <!--<property name="maxLength" column="max_length"/>-->
+    <!--</class>-->
+    <!--<class name="com.compomics.ensh.core.MiscAttribEntity" table="misc_attrib" catalog="homo_sapiens_core_63_37">-->
+        <!--<property name="miscFeatureId" column="misc_feature_id"/>-->
+        <!--<property name="attribTypeId" column="attrib_type_id"/>-->
+        <!--<property name="value" column="value"/>-->
+    <!--</class>-->
+    <class name="com.compomics.ensh.core.MiscFeatureEntity" table="misc_feature" catalog="homo_sapiens_core_63_37">
+        <id name="miscFeatureId" column="misc_feature_id"/>
+        <property name="seqRegionId" column="seq_region_id"/>
+        <property name="seqRegionStart" column="seq_region_start"/>
+        <property name="seqRegionEnd" column="seq_region_end"/>
+        <property name="seqRegionStrand" column="seq_region_strand"/>
+    </class>
+    <class name="com.compomics.ensh.core.MiscFeatureMiscSetEntity" table="misc_feature_misc_set"
+           catalog="homo_sapiens_core_63_37">
+        <composite-id mapped="true" class="com.compomics.ensh.core.MiscFeatureMiscSetEntityPK">
+            <key-property name="miscFeatureId" column="misc_feature_id"/>
+            <key-property name="miscSetId" column="misc_set_id"/>
+        </composite-id>
+    </class>
+    <class name="com.compomics.ensh.core.MiscSetEntity" table="misc_set" catalog="homo_sapiens_core_63_37">
+        <id name="miscSetId" column="misc_set_id"/>
+        <property name="code" column="code"/>
+        <property name="name" column="name"/>
+        <property name="description" column="description"/>
+        <property name="maxLength" column="max_length"/>
+    </class>
+    <class name="com.compomics.ensh.core.ObjectXrefEntity" table="object_xref" catalog="homo_sapiens_core_63_37">
+        <id name="objectXrefId" column="object_xref_id"/>
+        <property name="ensemblId" column="ensembl_id"/>
+        <property name="ensemblObjectType" column="ensembl_object_type"/>
+        <property name="xrefId" column="xref_id"/>
+        <property name="linkageAnnotation" column="linkage_annotation"/>
+        <property name="analysisId" column="analysis_id"/>
+    </class>
+    <!--<class name="com.compomics.ensh.core.OntologyXrefEntity" table="ontology_xref" catalog="homo_sapiens_core_63_37">-->
+        <!--<property name="objectXrefId" column="object_xref_id"/>-->
+        <!--<property name="sourceXrefId" column="source_xref_id"/>-->
+        <!--<property name="linkageType" column="linkage_type"/>-->
+    <!--</class>-->
+    <class name="com.compomics.ensh.core.PeptideArchiveEntity" table="peptide_archive"
+           catalog="homo_sapiens_core_63_37">
+        <id name="peptideArchiveId" column="peptide_archive_id"/>
+        <property name="md5Checksum" column="md5_checksum"/>
+        <property name="peptideSeq" column="peptide_seq"/>
+    </class>
+    <class name="com.compomics.ensh.core.PredictionExonEntity" table="prediction_exon"
+           catalog="homo_sapiens_core_63_37">
+        <id name="predictionExonId" column="prediction_exon_id"/>
+        <property name="predictionTranscriptId" column="prediction_transcript_id"/>
+        <property name="exonRank" column="exon_rank"/>
+        <property name="seqRegionId" column="seq_region_id"/>
+        <property name="seqRegionStart" column="seq_region_start"/>
+        <property name="seqRegionEnd" column="seq_region_end"/>
+        <property name="seqRegionStrand" column="seq_region_strand"/>
+        <property name="startPhase" column="start_phase"/>
+        <property name="score" column="score"/>
+        <property name="pvalue" column="p_value"/>
+    </class>
+    <class name="com.compomics.ensh.core.PredictionTranscriptEntity" table="prediction_transcript"
+           catalog="homo_sapiens_core_63_37">
+        <id name="predictionTranscriptId" column="prediction_transcript_id"/>
+        <property name="seqRegionId" column="seq_region_id"/>
+        <property name="seqRegionStart" column="seq_region_start"/>
+        <property name="seqRegionEnd" column="seq_region_end"/>
+        <property name="seqRegionStrand" column="seq_region_strand"/>
+        <property name="analysisId" column="analysis_id"/>
+        <property name="displayLabel" column="display_label"/>
+    </class>
+    <class name="com.compomics.ensh.core.ProteinAlignFeatureEntity" table="protein_align_feature"
+           catalog="homo_sapiens_core_63_37">
+        <id name="proteinAlignFeatureId" column="protein_align_feature_id"/>
+        <property name="seqRegionId" column="seq_region_id"/>
+        <property name="seqRegionStart" column="seq_region_start"/>
+        <property name="seqRegionEnd" column="seq_region_end"/>
+        <property name="seqRegionStrand" column="seq_region_strand"/>
+        <property name="hitStart" column="hit_start"/>
+        <property name="hitEnd" column="hit_end"/>
+        <property name="hitName" column="hit_name"/>
+        <property name="analysisId" column="analysis_id"/>
+        <property name="score" column="score"/>
+        <property name="evalue" column="evalue"/>
+        <property name="percIdent" column="perc_ident"/>
+        <property name="cigarLine" column="cigar_line"/>
+        <property name="externalDbId" column="external_db_id"/>
+        <property name="hcoverage" column="hcoverage"/>
+    </class>
+    <class name="com.compomics.ensh.core.ProteinFeatureEntity" table="protein_feature"
+           catalog="homo_sapiens_core_63_37">
+        <id name="proteinFeatureId" column="protein_feature_id"/>
+        <property name="translationId" column="translation_id"/>
+        <property name="seqStart" column="seq_start"/>
+        <property name="seqEnd" column="seq_end"/>
+        <property name="hitStart" column="hit_start"/>
+        <property name="hitEnd" column="hit_end"/>
+        <property name="hitName" column="hit_name"/>
+        <property name="analysisId" column="analysis_id"/>
+        <property name="score" column="score"/>
+        <property name="evalue" column="evalue"/>
+        <property name="percIdent" column="perc_ident"/>
+        <property name="externalData" column="external_data"/>
+    </class>
+    <class name="com.compomics.ensh.core.QtlEntity" table="qtl" catalog="homo_sapiens_core_63_37">
+        <id name="qtlId" column="qtl_id"/>
+        <property name="trait" column="trait"/>
+        <property name="lodScore" column="lod_score"/>
+        <property name="flankMarkerId1" column="flank_marker_id_1"/>
+        <property name="flankMarkerId2" column="flank_marker_id_2"/>
+        <property name="peakMarkerId" column="peak_marker_id"/>
+    </class>
+    <!--<class name="com.compomics.ensh.core.QtlFeatureEntity" table="qtl_feature" catalog="homo_sapiens_core_63_37">-->
+        <!--<property name="seqRegionId" column="seq_region_id"/>-->
+        <!--<property name="seqRegionStart" column="seq_region_start"/>-->
+        <!--<property name="seqRegionEnd" column="seq_region_end"/>-->
+        <!--<property name="qtlId" column="qtl_id"/>-->
+        <!--<property name="analysisId" column="analysis_id"/>-->
+    <!--</class>-->
+    <class name="com.compomics.ensh.core.QtlSynonymEntity" table="qtl_synonym" catalog="homo_sapiens_core_63_37">
+        <id name="qtlSynonymId" column="qtl_synonym_id"/>
+        <property name="qtlId" column="qtl_id"/>
+        <property name="sourceDatabase" column="source_database"/>
+        <property name="sourcePrimaryId" column="source_primary_id"/>
+    </class>
+    <class name="com.compomics.ensh.core.RepeatConsensusEntity" table="repeat_consensus"
+           catalog="homo_sapiens_core_63_37">
+        <id name="repeatConsensusId" column="repeat_consensus_id"/>
+        <property name="repeatName" column="repeat_name"/>
+        <property name="repeatClass" column="repeat_class"/>
+        <property name="repeatType" column="repeat_type"/>
+        <property name="repeatConsensus" column="repeat_consensus"/>
+    </class>
+    <class name="com.compomics.ensh.core.RepeatFeatureEntity" table="repeat_feature" catalog="homo_sapiens_core_63_37">
+        <id name="repeatFeatureId" column="repeat_feature_id"/>
+        <property name="seqRegionId" column="seq_region_id"/>
+        <property name="seqRegionStart" column="seq_region_start"/>
+        <property name="seqRegionEnd" column="seq_region_end"/>
+        <property name="seqRegionStrand" column="seq_region_strand"/>
+        <property name="repeatStart" column="repeat_start"/>
+        <property name="repeatEnd" column="repeat_end"/>
+        <property name="repeatConsensusId" column="repeat_consensus_id"/>
+        <property name="analysisId" column="analysis_id"/>
+        <property name="score" column="score"/>
+    </class>
+    <class name="com.compomics.ensh.core.SeqRegionEntity" table="seq_region" catalog="homo_sapiens_core_63_37">
+        <id name="seqRegionId" column="seq_region_id"/>
+        <property name="name" column="name"/>
+        <property name="coordSystemId" column="coord_system_id"/>
+        <property name="length" column="length"/>
+    </class>
+    <!--<class name="com.compomics.ensh.core.SeqRegionAttribEntity" table="seq_region_attrib"-->
+           <!--catalog="homo_sapiens_core_63_37">-->
+        <!--<property name="seqRegionId" column="seq_region_id"/>-->
+        <!--<property name="attribTypeId" column="attrib_type_id"/>-->
+        <!--<property name="value" column="value"/>-->
+    <!--</class>-->
+    <!--<class name="com.compomics.ensh.core.SeqRegionMappingEntity" table="seq_region_mapping"-->
+           <!--catalog="homo_sapiens_core_63_37">-->
+        <!--<property name="externalSeqRegionId" column="external_seq_region_id"/>-->
+        <!--<property name="internalSeqRegionId" column="internal_seq_region_id"/>-->
+        <!--<property name="mappingSetId" column="mapping_set_id"/>-->
+    <!--</class>-->
+    <class name="com.compomics.ensh.core.SeqRegionSynonymEntity" table="seq_region_synonym"
+           catalog="homo_sapiens_core_63_37">
+        <id name="seqRegionSynonymId" column="seq_region_synonym_id"/>
+        <property name="seqRegionId" column="seq_region_id"/>
+        <property name="synonym" column="synonym"/>
+        <property name="externalDbId" column="external_db_id"/>
+    </class>
+    <class name="com.compomics.ensh.core.SimpleFeatureEntity" table="simple_feature" catalog="homo_sapiens_core_63_37">
+        <id name="simpleFeatureId" column="simple_feature_id"/>
+        <property name="seqRegionId" column="seq_region_id"/>
+        <property name="seqRegionStart" column="seq_region_start"/>
+        <property name="seqRegionEnd" column="seq_region_end"/>
+        <property name="seqRegionStrand" column="seq_region_strand"/>
+        <property name="displayLabel" column="display_label"/>
+        <property name="analysisId" column="analysis_id"/>
+        <property name="score" column="score"/>
+    </class>
+    <class name="com.compomics.ensh.core.SplicingEventEntity" table="splicing_event" catalog="homo_sapiens_core_63_37">
+        <id name="splicingEventId" column="splicing_event_id"/>
+        <property name="name" column="name"/>
+        <property name="geneId" column="gene_id"/>
+        <property name="seqRegionId" column="seq_region_id"/>
+        <property name="seqRegionStart" column="seq_region_start"/>
+        <property name="seqRegionEnd" column="seq_region_end"/>
+        <property name="seqRegionStrand" column="seq_region_strand"/>
+        <property name="attribTypeId" column="attrib_type_id"/>
+    </class>
+    <class name="com.compomics.ensh.core.SplicingEventFeatureEntity" table="splicing_event_feature"
+           catalog="homo_sapiens_core_63_37">
+        <composite-id mapped="true" class="com.compomics.ensh.core.SplicingEventFeatureEntityPK">
+            <key-property name="splicingEventFeatureId" column="splicing_event_feature_id"/>
+            <key-property name="exonId" column="exon_id"/>
+            <key-property name="transcriptId" column="transcript_id"/>
+        </composite-id>
+        <property name="splicingEventId" column="splicing_event_id"/>
+        <property name="featureOrder" column="feature_order"/>
+        <property name="transcriptAssociation" column="transcript_association"/>
+        <property name="type" column="type"/>
+        <property name="start" column="start"/>
+        <property name="end" column="end"/>
+    </class>
+    <class name="com.compomics.ensh.core.SplicingTranscriptPairEntity" table="splicing_transcript_pair"
+           catalog="homo_sapiens_core_63_37">
+        <id name="splicingTranscriptPairId" column="splicing_transcript_pair_id"/>
+        <property name="splicingEventId" column="splicing_event_id"/>
+        <property name="transcriptId1" column="transcript_id_1"/>
+        <property name="transcriptId2" column="transcript_id_2"/>
+    </class>
+    <!--<class name="com.compomics.ensh.core.StableIdEventEntity" table="stable_id_event"-->
+           <!--catalog="homo_sapiens_core_63_37">-->
+        <!--<property name="oldStableId" column="old_stable_id"/>-->
+        <!--<property name="oldVersion" column="old_version"/>-->
+        <!--<property name="newStableId" column="new_stable_id"/>-->
+        <!--<property name="newVersion" column="new_version"/>-->
+        <!--<property name="mappingSessionId" column="mapping_session_id"/>-->
+        <!--<property name="type" column="type"/>-->
+        <!--<property name="score" column="score"/>-->
+    <!--</class>-->
+    <!--<class name="com.compomics.ensh.core.SupportingFeatureEntity" table="supporting_feature"-->
+           <!--catalog="homo_sapiens_core_63_37">-->
+        <!--<property name="exonId" column="exon_id"/>-->
+        <!--<property name="featureType" column="feature_type"/>-->
+        <!--<property name="featureId" column="feature_id"/>-->
+    <!--</class>-->
+    <class name="com.compomics.ensh.core.TranscriptEntity" table="transcript" catalog="homo_sapiens_core_63_37">
+        <id name="transcriptId" column="transcript_id"/>
+        <property name="geneId" column="gene_id"/>
+        <property name="analysisId" column="analysis_id"/>
+        <property name="seqRegionId" column="seq_region_id"/>
+        <property name="seqRegionStart" column="seq_region_start"/>
+        <property name="seqRegionEnd" column="seq_region_end"/>
+        <property name="seqRegionStrand" column="seq_region_strand"/>
+        <property name="displayXrefId" column="display_xref_id"/>
+        <property name="biotype" column="biotype"/>
+        <property name="status" column="status"/>
+        <property name="description" column="description"/>
+        <property name="isCurrent" column="is_current"/>
+        <property name="canonicalTranslationId" column="canonical_translation_id"/>
+    </class>
+    <!--<class name="com.compomics.ensh.core.TranscriptAttribEntity" table="transcript_attrib"-->
+           <!--catalog="homo_sapiens_core_63_37">-->
+        <!--<property name="transcriptId" column="transcript_id"/>-->
+        <!--<property name="attribTypeId" column="attrib_type_id"/>-->
+        <!--<property name="value" column="value"/>-->
+    <!--</class>-->
+    <class name="com.compomics.ensh.core.TranscriptStableIdEntity" table="transcript_stable_id"
+           catalog="homo_sapiens_core_63_37">
+        <id name="transcriptId" column="transcript_id"/>
+        <property name="stableId" column="stable_id"/>
+        <property name="version" column="version"/>
+        <property name="createdDate" column="created_date"/>
+        <property name="modifiedDate" column="modified_date"/>
+    </class>
+    <!--<class name="com.compomics.ensh.core.TranscriptSupportingFeatureEntity" table="transcript_supporting_feature"-->
+           <!--catalog="homo_sapiens_core_63_37">-->
+        <!--<property name="transcriptId" column="transcript_id"/>-->
+        <!--<property name="featureType" column="feature_type"/>-->
+        <!--<property name="featureId" column="feature_id"/>-->
+    <!--</class>-->
+    <class name="com.compomics.ensh.core.TranslationEntity" table="translation" catalog="homo_sapiens_core_63_37">
+        <id name="translationId" column="translation_id"/>
+        <property name="transcriptId" column="transcript_id"/>
+        <property name="seqStart" column="seq_start"/>
+        <property name="startExonId" column="start_exon_id"/>
+        <property name="seqEnd" column="seq_end"/>
+        <property name="endExonId" column="end_exon_id"/>
+    </class>
+    <!--<class name="com.compomics.ensh.core.TranslationAttribEntity" table="translation_attrib"-->
+           <!--catalog="homo_sapiens_core_63_37">-->
+        <!--<property name="translationId" column="translation_id"/>-->
+        <!--<property name="attribTypeId" column="attrib_type_id"/>-->
+        <!--<property name="value" column="value"/>-->
+    <!--</class>-->
+    <class name="com.compomics.ensh.core.TranslationStableIdEntity" table="translation_stable_id"
+           catalog="homo_sapiens_core_63_37">
+        <id name="translationId" column="translation_id"/>
+        <property name="stableId" column="stable_id"/>
+        <property name="version" column="version"/>
+        <property name="createdDate" column="created_date"/>
+        <property name="modifiedDate" column="modified_date"/>
+    </class>
+    <!--<class name="com.compomics.ensh.core.UnconventionalTranscriptAssociationEntity"-->
+           <!--table="unconventional_transcript_association" catalog="homo_sapiens_core_63_37">-->
+        <!--<property name="transcriptId" column="transcript_id"/>-->
+        <!--<property name="geneId" column="gene_id"/>-->
+        <!--<property name="interactionType" column="interaction_type"/>-->
+    <!--</class>-->
+    <class name="com.compomics.ensh.core.UnmappedObjectEntity" table="unmapped_object"
+           catalog="homo_sapiens_core_63_37">
+        <id name="unmappedObjectId" column="unmapped_object_id"/>
+        <property name="type" column="type"/>
+        <property name="analysisId" column="analysis_id"/>
+        <property name="externalDbId" column="external_db_id"/>
+        <property name="identifier" column="identifier"/>
+        <property name="unmappedReasonId" column="unmapped_reason_id"/>
+        <property name="queryScore" column="query_score"/>
+        <property name="targetScore" column="target_score"/>
+        <property name="ensemblId" column="ensembl_id"/>
+        <property name="ensemblObjectType" column="ensembl_object_type"/>
+        <property name="parent" column="parent"/>
+    </class>
+    <class name="com.compomics.ensh.core.UnmappedReasonEntity" table="unmapped_reason"
+           catalog="homo_sapiens_core_63_37">
+        <id name="unmappedReasonId" column="unmapped_reason_id"/>
+        <property name="summaryDescription" column="summary_description"/>
+        <property name="fullDescription" column="full_description"/>
+    </class>
+    <class name="com.compomics.ensh.core.XrefEntity" table="xref" catalog="homo_sapiens_core_63_37">
+        <id name="xrefId" column="xref_id"/>
+        <property name="externalDbId" column="external_db_id"/>
+        <property name="dbprimaryAcc" column="dbprimary_acc"/>
+        <property name="displayLabel" column="display_label"/>
+        <property name="version" column="version"/>
+        <property name="description" column="description"/>
+        <property name="infoType" column="info_type"/>
+        <property name="infoText" column="info_text"/>
+    </class>
+</hibernate-mapping>
