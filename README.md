@@ -15,7 +15,7 @@ This Java library is a Java Hibernate model to operate with the Ensembl biologic
 
 ## Project Support
 
-The cell-motility project is grateful for the support by:
+The compomics-ensh project is grateful for the support by:
 
 | Compomics | VIB | Ghent University|
 |:--:|:--:|:--:|
